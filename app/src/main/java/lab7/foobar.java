@@ -2,6 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 import heap.Heap;
 
+import heap.Heap;
+import avl.AVL;
+
 public final class foobar {
 
   Heap<Character, Integer> stack = new Heap<>();
@@ -45,4 +48,30 @@ public final class foobar {
     // repeat
   }
 
+
+
+  public String encode(String input){
+    String returnString = "";
+    for (int i = 0; i < input.length(); i++){
+      returnString = (String) counts.get(input.charAt(i)); // Need to know actual list name
+    }
+  }
+
+  public String decode(String input){
+    int cur; //avlTreeOrigin;
+    String returnString;
+    for (int i = 0; i < input.length(); i++){
+      if (cur.isLeaf()){
+        //returnString = cur.getValue();
+        //cur = avlTreeOrigin
+        continue;
+      }
+      if (counts.get(input.charAt(i)) == '0'){
+        //cur = cur.goLeft()
+      } else {
+        //cur = cur.goRight();
+      }
+    }
+    return returnString;
+  }
 }

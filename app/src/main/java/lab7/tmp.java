@@ -1,7 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
+import heap.Heap;
 
 public final class foobar {
+
+  Heap<Character, Integer> stack = new Heap<>();
 
   Map<Character, Integer> counts = new HashMap<>();
 
@@ -19,15 +22,24 @@ public final class foobar {
     // add the pair to a heap with the char as the value and the count 
     // as the priority
     
+    for(Map.Entry<String, HashMap> entry : counts.entrySet()) {
 
+        String key = entry.getKey();
+
+        HashMap value = entry.getValue();
+
+        stack.put(key, value);
+    }
   }
 
   /** Build the huffman tree from the frequency list**/
   private static void buildTree() {
     // take lowest two freqies
-    //
+    stack.poll();
+    stack.poll();
     // cobine into a new node with cobined frequencies
     //
+    new node = 
     // insert node into frequency list
     //
     // repeat

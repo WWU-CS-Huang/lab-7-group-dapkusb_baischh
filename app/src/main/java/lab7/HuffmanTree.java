@@ -50,7 +50,7 @@ public final class HuffmanTree {
   
 
   /** Count the chars in a the input string**/
-  private static void countChars(String s) {
+  private void countChars(String s) {
     for (char c : s.toCharArray()) {
       counts.put(c, counts.getOrDefault(c, 0) + 1);
     }

@@ -2,10 +2,37 @@ import java.util.HashMap;
 import java.util.Map;
 import heap.Heap;
 
-import heap.Heap;
-import avl.AVL;
+public final class HuffmanTree {
 
-public final class foobar {
+  public class Node {
+
+    public char character;
+    public int count;
+    public Node left;
+    public Node right;
+
+    /** constructor: gives default values to all fields */
+    public Node() { }
+
+    /** constructor: sets only word */
+    public Node(char c) {
+      character = c;
+    }
+
+    /** constructor: sets word and parent fields */
+    public Node(char c, int p) {
+      character = c;
+      count = p;
+    }
+
+    /** constructor: sets all fields */
+    public Node(char c, int p, Node l, Node r) {
+      character = c;
+      count = p;
+      left = l;
+      right = r;
+    }
+  }
 
   Heap<Character, Integer> stack = new Heap<>();
 
@@ -27,51 +54,38 @@ public final class foobar {
     
     for(Map.Entry<String, HashMap> entry : counts.entrySet()) {
 
-        String key = entry.getKey();
+        char c = entry.getKey();
 
-        HashMap value = entry.getValue();
+        int count = entry.getValue();
 
-        stack.put(key, value);
+        Node node = new Node(c, count, null, null);
+
+        stack.put(node, count);
     }
   }
 
   /** Build the huffman tree from the frequency list**/
   private static void buildTree() {
+  
+    if (stack.size() <= 1) return;
+
     // take lowest two freqies
-    stack.poll();
-    stack.poll();
+
+    Node h = stack.poll();
+    Node k = stack.poll();
+
     // cobine into a new node with cobined frequencies
-    //
-    new node = 
+
+    Node fresh = new Node(null, h.count + k.count, h, k);
+
     // insert node into frequency list
     //
+    stack.put(fresh, fresh.count);
+
     // repeat
+
+    buildTree();
   }
 
 
-
-  public String encode(String input){
-    String returnString = "";
-    for (int i = 0; i < input.length(); i++){
-      returnString = (String) counts.get(input.charAt(i)); // Need to know actual list name
-    }
-  }
-
-  public String decode(String input){
-    int cur; //avlTreeOrigin;
-    String returnString;
-    for (int i = 0; i < input.length(); i++){
-      if (cur.isLeaf()){
-        //returnString = cur.getValue();
-        //cur = avlTreeOrigin
-        continue;
-      }
-      if (counts.get(input.charAt(i)) == '0'){
-        //cur = cur.goLeft()
-      } else {
-        //cur = cur.goRight();
-      }
-    }
-    return returnString;
-  }
 }

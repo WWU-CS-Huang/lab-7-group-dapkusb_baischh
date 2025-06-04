@@ -4,18 +4,31 @@
 package lab7;
 
 import heap.Heap;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import avl.AVL;
 
 public class Huffman {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+    // public String parseFile() {
+    //     Scanner sc
+    // }
 
     public static void main(String[] args) {
         // System.out.println(new Huffman().getGreeting());
+        String text = "Couldnt find file";
         HuffmanTree test = new HuffmanTree();
+        Path filePath = Paths.get("src/main/resources/example1.txt");
+        try{
+            text = Files.readString(filePath);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         // test.test();
-        System.out.println(test.encode("gif"));
-        System.out.println(test.decode(test.encode("iffggi")));
+        // test.encode("fig");
+        // System.out.println(test.encode("gif"));
+        System.out.println(test.decode(test.encode(text)).equals(text));
     }
 }

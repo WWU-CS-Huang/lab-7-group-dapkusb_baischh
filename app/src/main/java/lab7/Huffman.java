@@ -12,6 +12,10 @@ public class Huffman {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Huffman().getGreeting());
+        // System.out.println(new Huffman().getGreeting());
+        HuffmanTree test = new HuffmanTree();
+        // test.test();
+        System.out.println(test.encode("gif"));
+        System.out.println(test.decode(test.encode("iffggi")));
     }
 }

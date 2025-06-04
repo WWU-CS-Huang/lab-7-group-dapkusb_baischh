@@ -45,7 +45,7 @@ public final class HuffmanTree {
 
   Hashtable<Character, String> storage = new Hashtable<>();
 
-  Node origin;
+  Node origin; // Head Node in Huffman Tree
 
   
 
@@ -101,7 +101,7 @@ public final class HuffmanTree {
     buildTree();
   }
 
-
+  /** Encodes a String into values that are able to be read by the Huffman Tree **/
   public String encode(String input) throws NoSuchElementException{ // If person tries to put a value thats not in the tree to encode
     String returnString = "";
     // String temp;
@@ -112,6 +112,7 @@ public final class HuffmanTree {
     return returnString;
   }
 
+  /** Decodes a String of zeros and ones into text **/
   public String decode(String input){
     Node cur = origin; //avlTreeOrigin;
     String returnString = "";
@@ -126,7 +127,7 @@ public final class HuffmanTree {
         cur = cur.right;
       }
     }
-    returnString += cur.character;
+    returnString += cur.character; // Adds the last letter as the for loop would omit it otherwise
     return returnString;
   }
 
@@ -141,11 +142,16 @@ public final class HuffmanTree {
   //   System.out.println(storage.entrySet());
   // }
 
-  public void walkTree(){
+
+  /** Finds the paths to each character in the Huffman Tree and adds them to a hashtable for storage **/
+  public void walkTree(){ 
     String path = "";
     walkTree(origin, path);
   }
 
+
+  /** Recursive method that finds paths and adds them to hashtable
+      Invariant: path will always contain the path of the node head **/
   private void walkTree(Node head, String path){
     System.out.println(path);
     if (head.left == null && head.right == null){

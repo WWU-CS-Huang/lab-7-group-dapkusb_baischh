@@ -51,8 +51,6 @@ public final class HuffmanTree {
 
   /** Count the chars in a the input string**/
   private static void countChars(String s) {
-    throw new UnsupportedOperationException();
-
     for (char c : s.toCharArray()) {
       counts.put(c, counts.getOrDefault(c, 0) + 1);
     }
@@ -60,7 +58,6 @@ public final class HuffmanTree {
 
   /** Populate a priority queue with chars from frequency list**/
   private static void enqueue() {
-    throw new UnsupportedOperationException();
     // for feach pair char and count 
     // add the pair to a heap with the char as the value and the count 
     // as the priority

@@ -69,6 +69,7 @@ public final class HuffmanTree {
     // as the priority
 
     char c;
+
     int count;
     
     for(Map.Entry<Character, Integer> entry : counts.entrySet()) {
@@ -83,31 +84,23 @@ public final class HuffmanTree {
     }
   }
 
-  /** Build the huffman tree from the frequency list**/
+  /** Build the huffman tree from the frequency list
+   * precondition: class has a valid queue**/
   private void buildTree() {
+    
     // countChars(s);
+
     // enqueue();
   
-    if (stack.size() <= 1) return;
+    while (stack.size() > 1) {
+      Node h = stack.poll();
+      Node k = stack.poll();
 
-    // take lowest two freqies
-
-    Node h = stack.poll();
-    Node k = stack.poll();
-
-    // cobine into a new node with cobined frequencies
-
-    Node fresh = new Node(h.count + k.count, h, k);
-
-    origin = fresh;
-
-    // insert node into frequency list
-    //
-    stack.add(fresh, fresh.count);
-
-    // repeat
-
-    buildTree();
+      Node fresh = new Node(h.count + k.count, h, k);
+      stack.add(fresh, fresh.count);
+    }
+    
+    origin = stack.poll();
   }
 
   /** Encodes a String into values that are able to be read by the Huffman Tree **/
